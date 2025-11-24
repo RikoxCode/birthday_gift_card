@@ -1,0 +1,69 @@
+<div class="w-screen h-screen">
+  <div class="container w-96 mx-auto mt-10">
+
+    <div class="wrapper">
+      <div class="banner-image"></div>
+      <h1>Rahel Wicki</h1>
+      <p>Alles Gute zu deinem Geburtstag!</p>
+    </div>
+
+    <div class="w-full">
+
+      <div class="mt-6 bg-gray-200 h-2 w-full rounded-full">
+        <div class="bg-green-600 h-2 rounded-full" [style]="'width: ' + audioProgress() + '%' "></div>
+      </div>
+
+      <p>{{ currentTime() }}</p>
+
+    </div>
+
+    <div class="flex justify-between w-full">
+
+      <div>
+        @if (isPlaying) {
+
+          <div class="flex gap-4 mt-5">
+            <button (click)="pauseAudio()" class="text-blue-400 scale-150 hover:text-blue-500">
+              <mat-icon>pause_circle</mat-icon>
+            </button>
+            <button (click)="stopAudio()" class="text-red-500 scale-150 hover:text-red-600">
+              <mat-icon>stop_circle</mat-icon>
+            </button>
+          </div>
+
+        } @else {
+
+          @if (isPaused) {
+
+            <div class="button-wrapper">
+              <button (click)="resetPause()" class="text-white scale-150 hover:text-green-400">
+                <mat-icon>play_circle</mat-icon>
+              </button>
+            </div>
+
+          } @else {
+
+            <div class="button-wrapper">
+              <button (click)="playAudio()" class="text-white scale-150 hover:text-green-400">
+                <mat-icon>play_circle</mat-icon>
+              </button>
+            </div>
+
+          }
+        }
+      </div>
+
+      <div class="mt-5">
+        <button (click)="toggleMute()" class="text-slate-300 scale-150 hover:text-red-500">
+          @if (isMuted){
+            <mat-icon>volume_off</mat-icon>
+          } @else {
+            <mat-icon>volume_up</mat-icon>
+          }
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
